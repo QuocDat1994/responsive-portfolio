@@ -2,10 +2,23 @@
   transition: all 0.5s ease-in-out;
 }
 
-@mixin background {
-  background: url(../../assets/img/background.jpg);
-  background-size: cover;
+@mixin transition-delay-menu-item {
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      transition-delay: $i * 0.1s;
+    }
+  }
+}
 
+@mixin hover-effect {
+  @include transition-effect;
+
+  &:hover {
+    color: $hightlight-color;
+  }
+}
+
+@mixin overlay($background, $opacity) {
   &::after {
     content: "";
     width: 100%;
@@ -13,8 +26,13 @@
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0.9;
+    background: $background;
+    opacity: $opacity;
     z-index: -1;
-    background: $background-color;
   }
+}
+
+@mixin background-image {
+  background: url(../../assets/img/background.jpg);
+  background-size: cover;
 }
