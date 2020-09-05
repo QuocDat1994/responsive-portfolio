@@ -1,0 +1,14 @@
+{
+  "name": "responsive-portfolio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/QuocDat1994/responsive-portfolio.git",
+  "author": "Dat <dat.truong@metanet.co.kr>",
+  "license": "MIT",
+  "scripts": {
+    "sass": "node-sass -w stylesheet/scss/ -o stylesheet/css/"
+  },
+  "dependencies": {
+    "node-sass": "^4.14.1"
+  }
+}

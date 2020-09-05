@@ -1,0 +1,66 @@
+@import "variables";
+@import "mixins";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  @include background;
+  color: $text-color;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: $text-color;
+  text-decoration: none;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+
+main {
+  padding: 4rem;
+  height: 100%;
+
+  &.home {
+    .home-name {
+      margin-top: 20vh;
+      font-size: 3rem;
+
+      span {
+        color: $hightlight-color;
+      }
+    }
+
+    .home-job {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .icons {
+      margin-top: 1rem;
+
+      a {
+        font-size: 1.5rem;
+        margin-right: 0.2rem;
+
+        &:hover {
+          color: $hightlight-color;
+          transition: all 0.5s ease-in-out;
+        }
+      }
+    }
+  }
+}
