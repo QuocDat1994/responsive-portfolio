@@ -31,9 +31,12 @@ a {
 
 // Header
 header {
-  position: fixed;
+  position: absolute;
+  overflow: hidden;
   width: 100%;
+  transition-delay: 10s;
   z-index: 2;
+  pointer-events: none;
 
   .menu-btn {
     position: absolute;
@@ -46,6 +49,7 @@ header {
     color: $text-color;
     font-size: 1.5rem;
     z-index: 2;
+    pointer-events: auto;
 
     .fa-bars {
       margin-right: -1.5rem;
@@ -77,7 +81,6 @@ header {
     align-items: center;
     justify-items: center;
     grid-template-columns: 1fr 1fr;
-
     &.is-active {
       .menu-avatar,
       .menu-nav,
@@ -125,7 +128,9 @@ header {
         transform: translate3d(100%, 0, 0);
         @include transition-effect;
         @include transition-delay-menu-item;
+
         a {
+          pointer-events: auto;
           @include hover-effect;
         }
       }
@@ -135,8 +140,10 @@ header {
 
 // Main
 main {
+  position: relative;
   padding: 4rem;
   min-height: calc(100vh - 50px);
+  min-width: 320px;
 
   .heading {
     font-size: 3rem;
@@ -223,6 +230,61 @@ main.about {
   }
 }
 
+main.work {
+  .projects {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    grid-gap: 1rem;
+
+    .project {
+      .project-img {
+        position: relative;
+        display: block;
+
+        img {
+          width: 100%;
+          border: 2px solid white;
+          @include transition-effect;
+
+          &:hover {
+            opacity: 0.7;
+            border: 2px solid $hightlight-color;
+          }
+        }
+      }
+    }
+
+    .project-btn {
+      display: flex;
+      text-align: center;
+
+      > a {
+        flex: 1;
+        padding: 0.2rem 0;
+        @include transition-effect;
+        @include hover-effect;
+      }
+
+      .btn-view {
+        background: lighten($background-color, 50%);
+        color: black;
+        &:hover {
+          background: lighten($background-color, 30%);
+        }
+      }
+
+      .btn-git {
+        background: darken($background-color, 50%);
+        &:hover {
+          background: darken($background-color, 20%);
+        }
+      }
+    }
+  }
+}
+
 // Footer
 footer {
   height: 50px;
@@ -232,33 +294,16 @@ footer {
   background: darken($background-color, 5%);
 }
 
-// ===== Mobiles =====
-@media only screen and (max-width: 320px) {
-}
-
-@media screen and (max-width: 480px) {
-  main {
-    padding: 2rem;
-    text-align: center;
-  }
-
-  header {
-    .menu {
-      grid-template-columns: 1fr;
-      grid-template-rows: 0.8fr 1.2fr;
-
-      .menu-avatar {
-        transform: translate3d(-100%, 0, 0);
-        @include overlay(darken($background-color, 10%), 0.9);
-      }
-
-      .menu-nav {
-        transform: translate3d(100%, 0, 0);
-      }
+// ===== Desktop =====
+@media screen and (min-width: 1024px) {
+  main.work {
+    .projects {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }
 
+// ===== Mobiles =====
 @media screen and (max-width: 640px) {
   main.about {
     .about-info,
@@ -275,12 +320,39 @@ footer {
       }
     }
   }
+
+  main.work {
+    .projects {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
 
-// ===== Tablet =====
-@media screen and (max-width: 768px) {
-}
+@media screen and (max-width: 480px) {
+  header {
+    .menu {
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.8fr 1.2fr;
 
-// ===== Desktop =====
-@media screen and (max-width: 1024px) {
+      .menu-avatar {
+        transform: translate3d(-100%, 0, 0);
+        @include overlay(darken($background-color, 10%), 0.9);
+      }
+
+      .menu-nav {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+  }
+
+  main {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  main.work {
+    .projects {
+      grid-template-columns: 1fr;
+    }
+  }
 }

@@ -32,9 +32,12 @@ a {
   text-decoration: none; }
 
 header {
-  position: fixed;
+  position: absolute;
+  overflow: hidden;
   width: 100%;
-  z-index: 2; }
+  transition-delay: 10s;
+  z-index: 2;
+  pointer-events: none; }
   header .menu-btn {
     position: absolute;
     top: 2rem;
@@ -45,7 +48,8 @@ header {
     cursor: pointer;
     color: white;
     font-size: 1.5rem;
-    z-index: 2; }
+    z-index: 2;
+    pointer-events: auto; }
     header .menu-btn .fa-bars {
       margin-right: -1.5rem;
       opacity: 1;
@@ -129,13 +133,16 @@ header {
         header .menu .menu-nav li:nth-child(4) {
           transition-delay: 0.4s; }
         header .menu .menu-nav li a {
+          pointer-events: auto;
           transition: all 0.5s ease-in-out; }
           header .menu .menu-nav li a:hover {
             color: #eece1a; }
 
 main {
+  position: relative;
   padding: 4rem;
-  min-height: calc(100vh - 50px); }
+  min-height: calc(100vh - 50px);
+  min-width: 320px; }
   main .heading {
     font-size: 3rem; }
     main .heading span {
@@ -191,6 +198,42 @@ main.about .about-jobs {
     main.about .about-jobs .job p {
       margin-top: 1rem; }
 
+main.work .projects {
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  grid-gap: 1rem; }
+  main.work .projects .project .project-img {
+    position: relative;
+    display: block; }
+    main.work .projects .project .project-img img {
+      width: 100%;
+      border: 2px solid white;
+      transition: all 0.5s ease-in-out; }
+      main.work .projects .project .project-img img:hover {
+        opacity: 0.7;
+        border: 2px solid #eece1a; }
+  main.work .projects .project-btn {
+    display: flex;
+    text-align: center; }
+    main.work .projects .project-btn > a {
+      flex: 1;
+      padding: 0.2rem 0;
+      transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out; }
+      main.work .projects .project-btn > a:hover {
+        color: #eece1a; }
+    main.work .projects .project-btn .btn-view {
+      background: #c4c4c4;
+      color: black; }
+      main.work .projects .project-btn .btn-view:hover {
+        background: #919191; }
+    main.work .projects .project-btn .btn-git {
+      background: black; }
+      main.work .projects .project-btn .btn-git:hover {
+        background: #111111; }
+
 footer {
   height: 50px;
   display: flex;
@@ -198,10 +241,23 @@ footer {
   justify-content: center;
   background: #373737; }
 
+@media screen and (min-width: 1024px) {
+  main.work .projects {
+    grid-template-columns: repeat(4, 1fr); } }
+
+@media screen and (max-width: 640px) {
+  main.about .about-info,
+  main.about .about-jobs {
+    grid-template-columns: 1fr; }
+  main.about .about-info {
+    justify-items: center; }
+    main.about .about-info .about-avatar {
+      min-width: 200px;
+      width: 50%; }
+  main.work .projects {
+    grid-template-columns: repeat(2, 1fr); } }
+
 @media screen and (max-width: 480px) {
-  main {
-    padding: 2rem;
-    text-align: center; }
   header .menu {
     grid-template-columns: 1fr;
     grid-template-rows: 0.8fr 1.2fr; }
@@ -218,14 +274,9 @@ footer {
         opacity: 0.9;
         z-index: -1; }
     header .menu .menu-nav {
-      transform: translate3d(100%, 0, 0); } }
-
-@media screen and (max-width: 640px) {
-  main.about .about-info,
-  main.about .about-jobs {
-    grid-template-columns: 1fr; }
-  main.about .about-info {
-    justify-items: center; }
-    main.about .about-info .about-avatar {
-      min-width: 200px;
-      width: 50%; } }
+      transform: translate3d(100%, 0, 0); }
+  main {
+    padding: 2rem;
+    text-align: center; }
+  main.work .projects {
+    grid-template-columns: 1fr; } }
