@@ -285,6 +285,40 @@ main.work {
   }
 }
 
+main.contact {
+  .contact-info {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 2rem;
+    margin-top: 1.5rem;
+
+    .box {
+      border: 2px solid white;
+      font-size: 1.2rem;
+      padding: 1.2rem;
+      margin: 0 auto;
+      cursor: pointer;
+      @include transition-effect;
+
+      span {
+        color: $hightlight-color;
+        @include transition-effect;
+      }
+
+      &:hover {
+        padding: 2rem;
+        cursor: pointer;
+        background: $hightlight-color;
+        color: black;
+
+        span {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
 // Footer
 footer {
   height: 50px;
@@ -330,6 +364,11 @@ footer {
 
 @media screen and (max-width: 480px) {
   header {
+    .menu-btn {
+      top: 1rem;
+      right: 2rem;
+    }
+
     .menu {
       grid-template-columns: 1fr;
       grid-template-rows: 0.8fr 1.2fr;
@@ -340,6 +379,7 @@ footer {
       }
 
       .menu-nav {
+        justify-content: start;
         transform: translate3d(100%, 0, 0);
       }
     }
