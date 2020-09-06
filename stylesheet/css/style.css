@@ -169,10 +169,11 @@ main.about .about-info {
   grid-gap: 1rem 2rem;
   margin: 2rem 0; }
   main.about .about-info .about-avatar {
-    width: 100%; }
+    width: 100%;
+    text-align: center; }
     main.about .about-info .about-avatar img {
       width: 100%;
-      margin-top: 0.5rem;
+      max-width: 300px;
       border-radius: 100%;
       border: 2px solid #eece1a; }
   main.about .about-info .about-details h3 {
