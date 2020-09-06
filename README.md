@@ -1,5 +1,3 @@
-# responsive-portfolio
-
 Responsive Portfolio
 ============
 [![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](http://responsive-portfolio.quocdat1994.surge.sh/) ![Responsive](https://img.shields.io/badge/responsive-website-blue)
