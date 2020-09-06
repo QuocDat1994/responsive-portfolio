@@ -173,7 +173,7 @@ main.about .about-info {
     text-align: center; }
     main.about .about-info .about-avatar img {
       width: 100%;
-      max-width: 300px;
+      max-width: 280px;
       border-radius: 100%;
       border: 2px solid #eece1a; }
   main.about .about-info .about-details h3 {
