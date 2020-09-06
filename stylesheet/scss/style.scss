@@ -16,8 +16,12 @@ body {
   height: 100%;
   font-family: "Roboto", sans-serif;
   line-height: 1.5;
-  @include background-image;
-  @include overlay($background-color, 0.9);
+  background: $background-color;
+
+  &.background-img {
+    @include background-image;
+    @include overlay($background-color, 0.9);
+  }
 }
 
 a {
@@ -132,33 +136,100 @@ header {
 // Main
 main {
   padding: 4rem;
-  height: 100%;
+  min-height: calc(100vh - 50px);
 
-  &.home {
-    .home-name {
-      margin-top: 20vh;
-      font-size: 3rem;
+  .heading {
+    font-size: 3rem;
 
-      span {
+    span {
+      color: $hightlight-color;
+    }
+  }
+
+  .sub-heading {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+}
+
+main.home {
+  .heading {
+    margin-top: 20vh;
+  }
+
+  .icons {
+    margin-top: 1rem;
+
+    a {
+      font-size: 1.5rem;
+      margin-right: 0.2rem;
+      @include hover-effect;
+    }
+  }
+}
+
+main.about {
+  .about-info {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    grid-gap: 1rem 2rem;
+    margin: 2rem 0;
+
+    .about-avatar {
+      width: 100%;
+
+      img {
+        width: 100%;
+        margin-top: 0.5rem;
+        border-radius: 100%;
+        border: 2px solid $hightlight-color;
+      }
+    }
+
+    .about-details {
+      h3 {
+        font-size: 2rem;
+        font-weight: 500;
         color: $hightlight-color;
       }
     }
+  }
 
-    .home-job {
-      font-size: 1.2rem;
-      font-weight: 500;
-    }
+  .about-jobs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
 
-    .icons {
-      margin-top: 1rem;
+    .job {
+      padding: 1rem;
+      background: lighten($background-color, 5%);
+      border-bottom: 5px solid $hightlight-color;
 
-      a {
-        font-size: 1.5rem;
-        margin-right: 0.2rem;
-        @include hover-effect;
+      h4 {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+
+      h5 {
+        font-weight: 500;
+        margin-top: 0.2rem;
+        color: $hightlight-color;
+      }
+
+      p {
+        margin-top: 1rem;
       }
     }
   }
+}
+
+// Footer
+footer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: darken($background-color, 5%);
 }
 
 // ===== Mobiles =====
@@ -183,6 +254,24 @@ main {
 
       .menu-nav {
         transform: translate3d(100%, 0, 0);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  main.about {
+    .about-info,
+    .about-jobs {
+      grid-template-columns: 1fr;
+    }
+
+    .about-info {
+      justify-items: center;
+
+      .about-avatar {
+        min-width: 200px;
+        width: 50%;
       }
     }
   }

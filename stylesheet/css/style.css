@@ -12,18 +12,20 @@ body {
   height: 100%;
   font-family: "Roboto", sans-serif;
   line-height: 1.5;
-  background: url(../../assets/img/background.jpg);
-  background-size: cover; }
-  body::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #444;
-    opacity: 0.9;
-    z-index: -1; }
+  background: #444; }
+  body.background-img {
+    background: url(../../assets/img/background.jpg);
+    background-size: cover; }
+    body.background-img::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #444;
+      opacity: 0.9;
+      z-index: -1; }
 
 a {
   color: white;
@@ -133,23 +135,68 @@ header {
 
 main {
   padding: 4rem;
-  height: 100%; }
-  main.home .home-name {
-    margin-top: 20vh;
+  min-height: calc(100vh - 50px); }
+  main .heading {
     font-size: 3rem; }
-    main.home .home-name span {
+    main .heading span {
       color: #eece1a; }
-  main.home .home-job {
+  main .sub-heading {
     font-size: 1.2rem;
     font-weight: 500; }
-  main.home .icons {
-    margin-top: 1rem; }
-    main.home .icons a {
-      font-size: 1.5rem;
-      margin-right: 0.2rem;
-      transition: all 0.5s ease-in-out; }
-      main.home .icons a:hover {
-        color: #eece1a; }
+
+main.home .heading {
+  margin-top: 20vh; }
+
+main.home .icons {
+  margin-top: 1rem; }
+  main.home .icons a {
+    font-size: 1.5rem;
+    margin-right: 0.2rem;
+    transition: all 0.5s ease-in-out; }
+    main.home .icons a:hover {
+      color: #eece1a; }
+
+main.about .about-info {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  grid-gap: 1rem 2rem;
+  margin: 2rem 0; }
+  main.about .about-info .about-avatar {
+    width: 100%; }
+    main.about .about-info .about-avatar img {
+      width: 100%;
+      margin-top: 0.5rem;
+      border-radius: 100%;
+      border: 2px solid #eece1a; }
+  main.about .about-info .about-details h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #eece1a; }
+
+main.about .about-jobs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem; }
+  main.about .about-jobs .job {
+    padding: 1rem;
+    background: #515151;
+    border-bottom: 5px solid #eece1a; }
+    main.about .about-jobs .job h4 {
+      font-size: 0.9rem;
+      margin-top: 0.5rem; }
+    main.about .about-jobs .job h5 {
+      font-weight: 500;
+      margin-top: 0.2rem;
+      color: #eece1a; }
+    main.about .about-jobs .job p {
+      margin-top: 1rem; }
+
+footer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #373737; }
 
 @media screen and (max-width: 480px) {
   main {
@@ -172,3 +219,13 @@ main {
         z-index: -1; }
     header .menu .menu-nav {
       transform: translate3d(100%, 0, 0); } }
+
+@media screen and (max-width: 640px) {
+  main.about .about-info,
+  main.about .about-jobs {
+    grid-template-columns: 1fr; }
+  main.about .about-info {
+    justify-items: center; }
+    main.about .about-info .about-avatar {
+      min-width: 200px;
+      width: 50%; } }
