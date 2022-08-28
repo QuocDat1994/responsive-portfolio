@@ -9,6 +9,6 @@
     "sass": "node-sass -w stylesheet/scss/ -o stylesheet/css/"
   },
   "dependencies": {
-    "node-sass": "^6.0.1"
+    "node-sass": "^7.0.0"
   }
 }
